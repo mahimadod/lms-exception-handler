@@ -17,12 +17,6 @@ pipeline {
             }
         }
 
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/mahimadod/lms-exception-handler.git'
-            }
-        }
-
         stage('Build & Deploy to GitHub Packages') {
             steps {
                 withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
