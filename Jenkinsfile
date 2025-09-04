@@ -31,8 +31,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
                     configFileProvider([configFile(fileId: 'github-settings', variable: 'MAVEN_SETTINGS')]) {
-                        sh 'mvn clean deploy --settings $MAVEN_SETTINGS -DskipTests'
-                    }
+                        bat 'mvn clean deploy --settings %MAVEN_SETTINGS% -DskipTests'                    }
                 }
             }
         }
